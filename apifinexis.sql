@@ -192,9 +192,9 @@ CREATE TABLE IF NOT EXISTS `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table finexis.django_migrations: ~19 rows (approximately)
+-- Dumping data for table finexis.django_migrations: ~21 rows (approximately)
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 	(1, 'contenttypes', '0001_initial', '2023-03-27 03:36:02.603113'),
 	(2, 'auth', '0001_initial', '2023-03-27 03:36:03.231830'),
@@ -215,7 +215,9 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 	(17, 'auth', '0012_alter_user_first_name_max_length', '2023-03-27 03:36:03.858118'),
 	(18, 'homecontent', '0001_initial', '2023-03-27 03:36:03.882713'),
 	(19, 'sessions', '0001_initial', '2023-03-27 03:36:03.937064'),
-	(20, 'homecontent', '0002_tbfam', '2023-03-27 09:02:32.712035');
+	(20, 'homecontent', '0002_tbfam', '2023-03-27 09:02:32.712035'),
+	(21, 'homecontent', '0003_tbfam_cl_invest_dest_tbmeranti_cl_invest_desc', '2023-04-06 06:39:20.417900'),
+	(22, 'homecontent', '0004_rename_cl_invest_dest_tbfam_cl_invest_desc', '2023-04-06 07:49:00.958253');
 
 -- Dumping structure for table finexis.django_session
 DROP TABLE IF EXISTS `django_session`;
@@ -236,13 +238,14 @@ CREATE TABLE IF NOT EXISTS `homecontent_tbfam` (
   `cl_invest_name` varchar(100) NOT NULL,
   `cl_current_price` decimal(12,2) NOT NULL,
   `cl_precentage_stonk` decimal(5,2) NOT NULL,
+  `cl_invest_desc` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table finexis.homecontent_tbfam: ~2 rows (approximately)
-INSERT INTO `homecontent_tbfam` (`id`, `cl_invest_name`, `cl_current_price`, `cl_precentage_stonk`) VALUES
-	(1, 'Harvest Invest', 809.90, 1.90),
-	(2, 'Jungle Invest', 904.05, 0.98);
+INSERT INTO `homecontent_tbfam` (`id`, `cl_invest_name`, `cl_current_price`, `cl_precentage_stonk`, `cl_invest_desc`) VALUES
+	(1, 'FAM Millennium Equity Fund', 809.90, 1.90, 'FME takes advantages of market volatility to identify underappreciated oppotunities globally and allocates capital to brightest minds to achieve above market return'),
+	(2, 'FAM Global Opportunities Plus Fund', 904.05, 0.98, 'Our "alternative" to the failings of the classical 60/40 approach. FGOPlus achieves returns that classical asset allocation portfolios cannot provide.');
 
 -- Dumping structure for table finexis.homecontent_tbmeranti
 DROP TABLE IF EXISTS `homecontent_tbmeranti`;
@@ -251,13 +254,14 @@ CREATE TABLE IF NOT EXISTS `homecontent_tbmeranti` (
   `cl_invest_name` varchar(100) NOT NULL,
   `cl_current_price` decimal(12,2) NOT NULL,
   `cl_precentage_stonk` decimal(5,2) NOT NULL,
+  `cl_invest_desc` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table finexis.homecontent_tbmeranti: ~2 rows (approximately)
-INSERT INTO `homecontent_tbmeranti` (`id`, `cl_invest_name`, `cl_current_price`, `cl_precentage_stonk`) VALUES
-	(1, 'H invest', 120089.00, 2.60),
-	(2, 'Moonlight Invest', 8903.89, 3.60);
+INSERT INTO `homecontent_tbmeranti` (`id`, `cl_invest_name`, `cl_current_price`, `cl_precentage_stonk`, `cl_invest_desc`) VALUES
+	(1, 'Meranti Capital VCC Millennium Equity Fund', 9.54, -15.18, 'MME identifiers underappreciated oppurtunity globally and allocates capital to the brightest minds to achieve above market return'),
+	(2, 'Meranti Capital VCC Asia Fund', 8.69, -8.72, 'MAF harnesses algorithms to relentlessly search from over 33,0000 Asian companies to uncover unappreciated businesses with high return on capital and marghin safety');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
